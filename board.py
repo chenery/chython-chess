@@ -36,10 +36,7 @@ class Board:
 
         :at_square Tuple[int, int]: where [int, int] refers to the row_index and the column index starting from zero.
         """
-        try:
-            return piece.build_piece(self._get_piece(at_square))
-        except IndexError:
-            return None
+        return piece.build_piece(self._get_piece(at_square))
 
     def _get_piece(self, at_square: Tuple[int, int]) -> Optional[str]:
         """Return the piece short name or None found at this board square."""
