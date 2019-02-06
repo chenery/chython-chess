@@ -6,7 +6,6 @@ short_name_pattern = re.compile("([W|B]){1}([R|N|Q|K|P]){1}")
 
 
 class Piece:
-
     """A base class for all pieces that provides common behaviour."""
 
     def __init__(self, colour: Colour):
@@ -25,6 +24,12 @@ class King(Piece):
 
 
 class Queen(Piece):
+
+    def potential_moves(self):
+        return None
+
+
+class Pawn(Piece):
 
     def potential_moves(self):
         return None
@@ -56,5 +61,7 @@ def build_piece(short_name: str) -> Optional[Piece]:
         return King(colour)
     elif piece_id == "Q":
         return Queen(colour)
+    elif piece_id == "P":
+        return Pawn(colour)
     else:
-        raise ValueError("Invalid piece: {0}. Use [R|N|Q|K|P]".format(colour_id))
+        raise ValueError("Invalid piece: {0}. Use [R|N|Q|K|P]".format(piece_id))
